@@ -44,20 +44,23 @@ export default function Page() {
           <img
             src="/HeronEdit.png"
             alt="Heron"
-            className="h-12 md:h-32 opacity-60 drop-shadow"
+            className="h-18 md:h-32 opacity-60 drop-shadow"
             loading="eager"
             decoding="async"
           />
-          <span
-            className="text-white/65"
-            style={{ textShadow: '0 0 15px hsl(var(--hugh)/.3), 0 0 35px hsl(var(--hugh)/.2)' }}
-          >
-            🖤OUR FIRST HUGH🖤
-          </span>
+        <span
+  className="text-white/65 text-center inline-block translate-x-[0.1em]"
+  style={{
+    textShadow: '0 0 15px hsl(var(--hugh)/.3), 0 0 35px hsl(var(--hugh)/.2)',
+  }}
+>
+  🖤OUR FIRST HUGH🖤
+</span>
+
           <img
             src="/LittleBat.png"
             alt="Bat"
-            className="h-12 md:h-32 opacity-60 drop-shadow"
+            className="h-18 md:h-32 opacity-60 drop-shadow"
             loading="eager"
             decoding="async"
           />
@@ -146,14 +149,14 @@ export default function Page() {
         <img
           src="/Hugh.png"
           alt="Little bat"
-          className="h-12 md:h-30 opacity-65 drop-shadow"
+          className="h-22 md:h-30 opacity-65 drop-shadow"
           loading="eager"
           decoding="async"
         />
         <img
           src="/LittleBat.png"
           alt="Little bat"
-          className="h-12 md:h-20 opacity-65 drop-shadow"
+          className="h-16 md:h-20 opacity-65 drop-shadow"
           loading="eager"
           decoding="async"
         />
