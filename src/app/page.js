@@ -1,7 +1,7 @@
 'use client';
-import { useState, useEffect, useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 
-function formatTime(msLeft) {
+function fmt(msLeft) {
   const s = Math.max(0, Math.floor(msLeft / 1000));
   const d = Math.floor(s / 86400);
   const h = Math.floor((s % 86400) / 3600);
@@ -11,69 +11,107 @@ function formatTime(msLeft) {
 }
 
 export default function Page() {
+  // Target: Sat 12 Oct 2025 12:00 (local time on the viewer’s machine)
   const target = useMemo(() => new Date('2025-10-12T12:00:00'), []);
-  const [now, setNow] = useState(Date.now());
+  const [now, setNow] = useState(null);     // null until mounted
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    setNow(Date.now());
     const id = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(id);
   }, []);
 
-  const msLeft = Math.max(0, target.getTime() - now);
-  const { d, h, m, sec } = formatTime(msLeft);
+  // While SSR/first paint, render a stable shell to avoid mismatches
+  const msLeft = now === null ? null : Math.max(0, target.getTime() - now);
+  const { d, h, m, sec } = msLeft === null ? { d: 0, h: 0, m: 0, sec: 0 } : fmt(msLeft);
   const done = msLeft === 0;
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center gap-6 bg-black text-slate-100 font-serif text-center px-4">
-      {/* Title */}
-      <h1 className="text-5xl md:text-7xl font-black tracking-tight goth-glow">
-        🦇 OUR FIRST HUGH 🦇
-      </h1>
+    <main
+      className="smoke-layer relative min-h-screen overflow-hidden"
+      style={{
+        '--smoke-opacity': .18, // tweak smoke strength
+        '--text-alpha': .94     // tweak global text alpha (used by .text-soft)
+      }}
+    >
+      <section className="relative z-10 flex flex-col items-center justify-center gap-7 px-5 py-16 text-center text-soft">
+        {/* Title */}
+        <h1
+          className="font-[Cinzel] goth-glow text-5xl md:text-7xl font-extrabold tracking-tight leading-none"
+          style={{ letterSpacing: '.02em' }}
+        >
+          <span className="align-middle mr-2">🦇</span>
+          <span
+            className="bg-clip-text text-transparent"
+            style={{ backgroundImage: 'linear-gradient(180deg, hsl(var(--hugh)/.95), hsl(var(--hugh)/.65))' }}
+          >
+            OUR FIRST HUGH
+          </span>
+          <span className="align-middle ml-2">🦇</span>
+        </h1>
 
-      {/* Tagline */}
-      <p className="max-w-xl text-lg md:text-xl text-slate-300 italic leading-relaxed">
-        The starting point of an IRL spiral – which, of course, doesn&apos;t really
-        have a starting point, as spirals have neither a start <em>nor</em> an end
-        point... Let&apos;s <span className="text-purple-400 font-bold">JUMP IN!!!</span> Yaaaay!!!
-      </p>
+        {/* Tagline */}
+        <p className="max-w-2xl font-[Inter] text-lg md:text-xl italic leading-relaxed">
+          The starting point of an IRL spiral – which, of course, doesn&apos;t really
+          have a starting point, as spirals have neither a start <em>nor</em> an end
+          point... Let&apos;s <span className="text-[hsl(var(--hugh))] font-semibold">JUMP IN!!!</span> Yaaaay!!!
+        </p>
 
-      {/* Date */}
-      <p className="text-slate-400 text-sm uppercase tracking-[0.2em]">
-        Saturday&nbsp;12&nbsp;October&nbsp;2025
-      </p>
+        {/* Date */}
+        <p className="font-[Inter] text-sm tracking-[0.28em] uppercase">
+          Saturday 12 October 2025
+        </p>
 
-      {/* Countdown */}
-      {!done ? (
-        <div className="grid grid-cols-4 gap-3 mt-2">
-          {[
-            ['Days', d],
-            ['Hours', h],
-            ['Mins', m],
-            ['Secs', sec],
-          ].map(([label, val]) => (
-            <div
-              key={label}
-              className="bg-zinc-900/70 border border-zinc-700 rounded-xl px-5 py-4 shadow-lg"
-            >
-              <div className="text-3xl font-mono text-purple-300 tabular-nums">
-                {String(val).padStart(2, '0')}
+        {/* Countdown */}
+        {!mounted ? (
+          // SSR-safe placeholder shell (no changing numbers)
+          <div className="grid grid-cols-4 gap-3 mt-2 opacity-70">
+            {['Days','Hours','Mins','Secs'].map((label) => (
+              <div
+                key={label}
+                className="rounded-2xl border border-white/10 bg-black/45 backdrop-blur-sm px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,.45)]"
+              >
+                <div className="font-[Playfair Display] text-3xl md:text-4xl tracking-wide"
+                     style={{ color: 'hsl(var(--hugh))' }}>
+                  -- 
+                </div>
+                <div className="text-[11px] mt-1 uppercase tracking-[0.2em] text-slate-300/80">{label}</div>
               </div>
-              <div className="text-xs uppercase tracking-widest text-slate-500 mt-1">
-                {label}
+            ))}
+          </div>
+        ) : !done ? (
+          <div className="grid grid-cols-4 gap-3 mt-2">
+            {[
+              ['Days', d], ['Hours', h], ['Mins', m], ['Secs', sec],
+            ].map(([label, val]) => (
+              <div
+                key={label}
+                className="rounded-2xl border border-white/10 bg-black/45 backdrop-blur-sm px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,.45)]"
+              >
+                <div
+                  className="font-[Playfair Display] text-3xl md:text-4xl tracking-wide countdown-num"
+                  style={{ color: 'hsl(var(--hugh))' }}
+                  suppressHydrationWarning
+                >
+                  {String(val).padStart(2, '0')}
+                </div>
+                <div className="text-[11px] mt-1 uppercase tracking-[0.2em] text-slate-300/80">{label}</div>
               </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="mt-4 text-4xl text-purple-400 animate-pulse">
-          H U G H ! 🫂
-        </div>
-      )}
+            ))}
+          </div>
+        ) : (
+          <div className="mt-4 text-4xl md:text-5xl goth-glow" style={{ color: 'hsl(var(--hugh))' }}>
+            H U G H ! 🫂
+          </div>
+        )}
 
-      {/* Decorative bats & heron */}
-      <div className="mt-10 text-2xl opacity-50 select-none">
-        🦇 🦇 <span className="text-blue-400">🪶</span> 🦇
-      </div>
+        {/* Tiny familiars */}
+        <div className="mt-10 text-2xl opacity-60 select-none">
+          🦇 🦇 <span className="mx-1">🪶</span> 🦇
+        </div>
+      </section>
     </main>
   );
 }
