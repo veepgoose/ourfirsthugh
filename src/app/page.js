@@ -38,33 +38,43 @@ export default function Page() {
       <section className="relative z-10 flex flex-col items-center justify-center gap-7 px-5 py-16 text-center text-soft">
         {/* Title (kept your heron/bat + 🖤 text) */}
         <h1
-          className="font-['Cinzel'] goth-glow text-5xl md:text-7xl font-extrabold tracking-tight leading-none flex items-center justify-center gap-3"
-          style={{ letterSpacing: '.02em' }}
-        >
-          <img
-            src="/HeronEdit.png"
-            alt="Heron"
-            className="h-18 md:h-32 opacity-60 drop-shadow"
-            loading="eager"
-            decoding="async"
-          />
-        <span
-  className="text-white/65 text-center inline-block translate-x-[0.1em]"
-  style={{
-    textShadow: '0 0 15px hsl(var(--hugh)/.3), 0 0 35px hsl(var(--hugh)/.2)',
-  }}
+  className="
+    font-['Cinzel'] goth-glow font-extrabold tracking-tight leading-tight
+    text-[9vw] sm:text-5xl md:text-7xl
+    flex items-center justify-center gap-2 sm:gap-3 w-full text-center
+  "
+  style={{ letterSpacing: '.01em' }}
 >
-  🖤OUR FIRST HUGH🖤
-</span>
+  <img
+    src="/HeronEdit.png"
+    alt="Heron"
+    className="h-12 md:h-32 opacity-60 drop-shadow shrink-0"
+    loading="eager"
+    decoding="async"
+  />
 
-          <img
-            src="/LittleBat.png"
-            alt="Bat"
-            className="h-18 md:h-32 opacity-60 drop-shadow"
-            loading="eager"
-            decoding="async"
-          />
-        </h1>
+  {/* centre text wrapper */}
+  <div className="flex flex-col items-center justify-center text-center">
+    <span
+      className="text-white/65 text-center inline-block"
+      style={{
+        textShadow:
+          '0 0 15px hsl(var(--hugh)/.3), 0 0 35px hsl(var(--hugh)/.2)',
+      }}
+    >
+      🖤OUR FIRST HUGH🖤
+    </span>
+  </div>
+
+  <img
+    src="/LittleBat.png"
+    alt="Bat"
+    className="h-12 md:h-32 opacity-60 drop-shadow shrink-0"
+    loading="eager"
+    decoding="async"
+  />
+</h1>
+
 
         {/* Tagline */}
     <p
