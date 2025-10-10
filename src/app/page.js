@@ -38,10 +38,10 @@ export default function Page() {
     >
       <section className="relative z-10 flex flex-col items-center justify-center gap-7 px-5 py-16 text-center text-soft">
         {/* Title */}
-        <h1
-          className="font-[Cinzel] goth-glow text-5xl md:text-7xl font-extrabold tracking-tight leading-none"
-          style={{ letterSpacing: '.02em' }}
-        >
+      <h1
+  className="font-['Cinzel'] goth-glow text-5xl md:text-7xl font-extrabold tracking-tight leading-none"
+  style={{ letterSpacing: '.02em' }}
+>
           <span className="align-middle mr-2">🦇</span>
           <span
             className="bg-clip-text text-transparent"
@@ -73,10 +73,14 @@ export default function Page() {
                 key={label}
                 className="rounded-2xl border border-white/10 bg-black/45 backdrop-blur-sm px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,.45)]"
               >
-                <div className="font-[Playfair Display] text-3xl md:text-4xl tracking-wide"
-                     style={{ color: 'hsl(var(--hugh))' }}>
-                  -- 
-                </div>
+           <div
+  className="font-['Playfair Display'] text-3xl md:text-4xl tracking-wide countdown-num"
+  style={{ color: 'hsl(var(--hugh))' }}
+  suppressHydrationWarning
+>
+  {String(val).padStart(2, '0')}
+</div>
+
                 <div className="text-[11px] mt-1 uppercase tracking-[0.2em] text-slate-300/80">{label}</div>
               </div>
             ))}
@@ -107,11 +111,25 @@ export default function Page() {
           </div>
         )}
 
-        {/* Tiny familiars */}
-        <div className="mt-10 text-2xl opacity-60 select-none">
-          🦇 🦇 <span className="mx-1">🪶</span> 🦇
-        </div>
+     
       </section>
+      <footer className="fixed bottom-4 left-0 right-0 z-10 flex items-end justify-center gap-6 pointer-events-none">
+  <img
+    src="/HeronEdit.png"
+    alt="Heron by Martin"
+    className="h-16 md:h-20 opacity-90 drop-shadow"
+    loading="eager"
+    decoding="async"
+  />
+  <img
+    src="/LittleBat.png"
+    alt="Little bat"
+    className="h-12 md:h-16 opacity-90 drop-shadow"
+    loading="eager"
+    decoding="async"
+  />
+</footer>
+
     </main>
   );
 }
