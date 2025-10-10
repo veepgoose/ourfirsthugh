@@ -12,6 +12,8 @@ export default function RootLayout({ children }) {
   href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;600&family=Playfair+Display:wght@500;700&display=swap"
   rel="stylesheet"
 />
+<link rel="icon" href="/HeronEdit.png" type="image/png" />
+
 
       </head>
      <body className="bg-black text-slate-100 font-[Inter] min-h-screen">{children}</body>

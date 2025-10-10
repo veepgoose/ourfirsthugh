@@ -57,3 +57,38 @@
     0 0 6px hsl(var(--hugh) / 0.35),
     0 0 12px hsl(var(--hugh) / 0.22);
 }
+
+/* Gentle smoke-like fade for text */
+@keyframes textFade {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+    filter: blur(6px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-text {
+  animation: textFade 5s ease-out both;
+
+}
+/* Hide Next.js dev build indicator (Shadow DOM host) */
+nextjs-portal {
+  display: none !important;
+}
+
+/* Cover older IDs too, just in case */
+#__next-build-watcher,
+#__next-build-indicator,
+#__next-build-overlay {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
