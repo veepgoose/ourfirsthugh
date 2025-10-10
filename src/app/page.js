@@ -11,8 +11,8 @@ function fmt(msLeft) {
 }
 
 export default function Page() {
-  // Target: Sat 12 Oct 2025 12:00 (viewer local time)
-  const target = useMemo(() => new Date('2025-10-12T12:00:00'), []);
+ 
+  const target = useMemo(() => new Date('2025-10-11T12:00:00'), []);
   const [now, setNow] = useState(null);
   const [mounted, setMounted] = useState(false);
 
@@ -41,7 +41,7 @@ export default function Page() {
   className="
     font-['Cinzel'] goth-glow font-extrabold tracking-tight leading-tight
     text-[9vw] sm:text-5xl md:text-7xl
-    grid grid-cols-[auto_1fr_auto] items-center gap-4 sm:gap-3 w-full
+    grid grid-cols-[auto_1fr_auto] items-center gap- sm:gap-3 w-full
   "
   style={{ letterSpacing: '.01em' }}
 >
@@ -95,7 +95,7 @@ export default function Page() {
 
         {/* Date */}
         <p className="font-['Inter'] text-sm tracking-[0.28em] uppercase">
-          Saturday 12 October 2025
+          Saturday 11 October 2025
         </p>
 
         {/* Countdown (SSR-safe shell → live numbers → done) */}
