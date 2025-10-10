@@ -41,7 +41,7 @@ export default function Page() {
   className="
     font-['Cinzel'] goth-glow font-extrabold tracking-tight leading-tight
     text-[9vw] sm:text-5xl md:text-7xl
-    grid grid-cols-[auto_1fr_auto] items-center gap-2 sm:gap-3 w-full
+    grid grid-cols-[auto_1fr_auto] items-center gap-4 sm:gap-3 w-full
   "
   style={{ letterSpacing: '.01em' }}
 >
@@ -55,12 +55,19 @@ export default function Page() {
   />
 
   {/* Middle text — truly centered */}
-  <span
-    className="text-white/65 text-center inline-block justify-self-center"
-    style={{ textShadow: '0 0 15px hsl(var(--hugh)/.3), 0 0 35px hsl(var(--hugh)/.2)' }}
-  >
-    🖤OUR FIRST HUGH🖤
-  </span>
+<span
+  className="
+    text-white/65 text-center inline-block
+    text-[7vw] sm:text-[5vw] md:text-[3.5vw] lg:text-6xl
+  "
+  style={{
+    textShadow:
+      '0 0 15px hsl(var(--hugh)/.3), 0 0 35px hsl(var(--hugh)/.2)',
+    whiteSpace: 'nowrap',
+  }}
+>
+  🖤OUR FIRST HUGH🖤
+</span>
 
   {/* Right bat — keep your opacity/size */}
   <img
