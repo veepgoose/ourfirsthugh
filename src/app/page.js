@@ -12,7 +12,7 @@ function fmt(msLeft) {
 
 export default function Page() {
  
-  const target = useMemo(() => new Date('2025-10-11T12:00:00'), []);
+  const target = useMemo(() => new Date('2025-10-20T15:10:00'), []);
   const [now, setNow] = useState(null);
   const [mounted, setMounted] = useState(false);
 
@@ -66,7 +66,7 @@ export default function Page() {
     whiteSpace: 'nowrap',
   }}
 >
-  🖤OUR FIRST HUGH🖤
+  🖤OUR <s>FIRST</s> SECOND HUGH🖤
 </span>
 
   {/* Right bat — keep your opacity/size */}
@@ -85,17 +85,18 @@ export default function Page() {
     <p
   className="max-w-2xl font-['Inter'] text-lg md:text-xl italic leading-relaxed text-slate-200/90 fade-text"
 >
-  There was never a beginning - only this slow collision,<br />
-  time folding its wings around{' '}
+  Time unfurls its wings; the spiral reverses,<br />
+  not to repeat, but to deepen.<br />
+  Neither echo nor shadow,<br />{' '}
   <span className="text-[hsl(var(--hugh))] font-semibold">
-    our first hugh
+    only difference, refracted in familiarity
   </span>.
 </p>
 
 
         {/* Date */}
         <p className="font-['Inter'] text-sm tracking-[0.28em] uppercase">
-          Saturday 11 October 2025
+          Monday 20 October 2025
         </p>
 
         {/* Countdown (SSR-safe shell → live numbers → done) */}

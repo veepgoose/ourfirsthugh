@@ -1,6 +1,6 @@
 import "./globals.css";
 
-export const metadata = { title: "ourfirsthugh" };
+export const metadata = { title: "oursecondhugh" };
 
 export default function RootLayout({ children }) {
   return (
