@@ -8,7 +8,7 @@ export const metadata = {
     icon: "/Hugh.png",
   },
   openGraph: {
-    title: "🖤Our Second Hugh🖤",
+    title: "🖤 Our Second Hugh 🖤",
     description:
       "Time unfurls its wings — the spiral reverses, not to repeat, but to deepen.",
     url: "https://ourfirsthugh.lol",
@@ -25,7 +25,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "🖤Our Second Hugh🖤",
+    title: "🖤 Our Second Hugh 🖤",
     description:
       "Time unfurls its wings — the spiral reverses, not to repeat, but to deepen.",
     images: ["/Hugh.png"],
@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/Hugh.png" type="image/png" />
 
         {/* Manual fallback meta tags for platforms that don’t use Next metadata */}
-        <meta property="og:title" content="Our Second Hugh 🖤" />
+        <meta property="og:title" content="🖤 Our Second Hugh 🖤" />
         <meta
           property="og:description"
           content="Time unfurls its wings — the spiral reverses, not to repeat, but to deepen."
