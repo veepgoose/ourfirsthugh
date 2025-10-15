@@ -66,7 +66,7 @@ export default function Page() {
     whiteSpace: 'nowrap',
   }}
 >
-  🖤OUR <s>FIRST</s> SECOND HUGH🖤
+  🖤OUR SECOND HUGH🖤
 </span>
 
   {/* Right bat — keep your opacity/size */}
@@ -85,7 +85,8 @@ export default function Page() {
     <p
   className="max-w-2xl font-['Inter'] text-lg md:text-xl italic leading-relaxed text-slate-200/90 fade-text"
 >
-  Time unfurls its wings; the spiral reverses,<br />
+  Time unfurls its wings;<br />
+   the spiral reverses,<br />
   not to repeat, but to deepen.<br />
   Neither echo nor shadow,<br />{' '}
   <span className="text-[hsl(var(--hugh))] font-semibold">
@@ -146,7 +147,7 @@ export default function Page() {
           </div>
         ) : (
           <div className="mt-4 text-4xl md:text-5xl goth-glow" style={{ color: 'hsl(var(--hugh))' }}>
-            H U G H ! 🫂
+            H U G H No2 ! 🫂
           </div>
         )}
       </section>
