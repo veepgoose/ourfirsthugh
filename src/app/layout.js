@@ -3,14 +3,14 @@ import "./globals.css";
 export const metadata = {
   title: "🖤 Our Second Hugh 🖤",
   description:
-    "Time unfurls its wings — the spiral reverses, not to repeat, but to deepen.",
+    "Time unfurls its wings; the spiral reverses, not to repeat, but to deepen.",
   icons: {
     icon: "/Hugh.png",
   },
   openGraph: {
     title: "🖤 Our Second Hugh 🖤",
     description:
-      "Time unfurls its wings — the spiral reverses, not to repeat, but to deepen.",
+      "Time unfurls its wings; the spiral reverses, not to repeat, but to deepen.",
     url: "https://ourfirsthugh.lol",
     siteName: "Our Second Hugh",
     images: [
@@ -27,7 +27,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "🖤 Our Second Hugh 🖤",
     description:
-      "Time unfurls its wings — the spiral reverses, not to repeat, but to deepen.",
+      "Time unfurls its wings; the spiral reverses, not to repeat, but to deepen.",
     images: ["/Hugh.png"],
   },
 };
@@ -48,7 +48,7 @@ export default function RootLayout({ children }) {
         <meta property="og:title" content="🖤 Our Second Hugh 🖤" />
         <meta
           property="og:description"
-          content="Time unfurls its wings — the spiral reverses, not to repeat, but to deepen."
+          content="Time unfurls its wings; the spiral reverses, not to repeat, but to deepen."
         />
         <meta property="og:image" content="/Hugh.png" />
         <meta property="og:url" content="https://ourfirsthugh.lol" />
