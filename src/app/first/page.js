@@ -2,8 +2,9 @@
 import { useMemo, useState, useEffect } from 'react';
 import Link from 'next/link';
 
-function fmt(msLeft) {
-  const s = Math.max(0, Math.floor(msLeft / 1000));
+// format helper (d/h/m/s) from milliseconds
+function fmt(ms) {
+  const s = Math.max(0, Math.floor(ms / 1000));
   const d = Math.floor(s / 86400);
   const h = Math.floor((s % 86400) / 3600);
   const m = Math.floor((s % 3600) / 60);
@@ -12,8 +13,8 @@ function fmt(msLeft) {
 }
 
 export default function Page() {
-  // Second Hugh target (viewer local time)
-  const target = useMemo(() => new Date('2025-10-20T15:10:00'), []);
+  // 👇 Your actual first Hugh moment (local time)
+  const firstHugh = useMemo(() => new Date('2025-10-11T12:00:00'), []);
   const [now, setNow] = useState(null);
   const [mounted, setMounted] = useState(false);
 
@@ -24,9 +25,9 @@ export default function Page() {
     return () => clearInterval(id);
   }, []);
 
-  const msLeft = now === null ? null : Math.max(0, target.getTime() - now);
-  const { d, h, m, sec } = msLeft === null ? { d: 0, h: 0, m: 0, sec: 0 } : fmt(msLeft);
-  const done = msLeft === 0;
+  // COUNT UP (elapsed since firstHugh). If visited before that date, clamp to 0.
+  const elapsedMs = now === null ? null : Math.max(0, now - firstHugh.getTime());
+  const { d, h, m, sec } = elapsedMs === null ? { d: 0, h: 0, m: 0, sec: 0 } : fmt(elapsedMs);
 
   return (
     <main
@@ -37,12 +38,13 @@ export default function Page() {
       }}
     >
       <section className="relative z-10 flex flex-col items-center justify-center gap-7 px-5 py-16 text-center text-soft">
-        {/* Title */}
+
+        {/* Title — same grid layout: heron · centered text · bat */}
         <h1
           className="
             font-['Cinzel'] goth-glow font-extrabold tracking-tight leading-tight
             text-[9vw] sm:text-5xl md:text-7xl
-            grid grid-cols-[auto_1fr_auto] items-center w-full
+            grid grid-cols-[auto_1fr_auto] items-center gap-2 sm:gap-3 w-full
           "
           style={{ letterSpacing: '.01em' }}
         >
@@ -55,14 +57,13 @@ export default function Page() {
           />
 
           <span
-            className="text-white/65 text-center inline-block
-                       text-[7vw] sm:text-[5vw] md:text-[3.5vw] lg:text-6xl"
+            className="text-white/65 text-center inline-block"
             style={{
               textShadow: '0 0 15px hsl(var(--hugh)/.3), 0 0 35px hsl(var(--hugh)/.2)',
               whiteSpace: 'nowrap',
             }}
           >
-            🖤OUR SECOND HUGH🖤
+            🖤OUR FIRST HUGH🖤
           </span>
 
           <img
@@ -74,23 +75,21 @@ export default function Page() {
           />
         </h1>
 
-        {/* Poem */}
-        <p className="max-w-2xl font-['Inter'] text-lg md:text-xl italic leading-relaxed text-slate-200/90 fade-text">
-          Time unfurls its wings;<br />
-          the spiral reverses,<br />
-          not to repeat, but to deepen.<br />
-          Neither echo nor shadow,<br />
-          <span className="text-[hsl(var(--hugh))] font-semibold">
-            only difference, refracted in familiarity
+        {/* Tagline (original) */}
+        <p className="max-w-2xl font-['Inter'] text-lg md:text-xl italic leading-relaxed text-slate-200/90">
+          There was never a beginning - only this slow collision,<br />
+          time folding its wings around
+           <span className="text-[hsl(var(--hugh))] font-semibold">
+             our first hugh
           </span>.
         </p>
 
-        {/* Date label */}
+        {/* Label date — show it's a "since" timer */}
         <p className="font-['Inter'] text-sm tracking-[0.28em] uppercase">
-          Monday 20 October 2025
+          Since Saturday 11 October 2025
         </p>
 
-        {/* Countdown */}
+        {/* Elapsed counter (keeps your card design) */}
         {!mounted ? (
           <div className="grid grid-cols-4 gap-3 mt-2 opacity-70">
             {['Days', 'Hours', 'Mins', 'Secs'].map((label) => (
@@ -98,13 +97,19 @@ export default function Page() {
                 key={label}
                 className="rounded-2xl border border-white/10 bg-black/45 backdrop-blur-sm px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,.45)]"
               >
-                <div className="font-['Playfair Display'] text-3xl md:text-4xl tracking-wide"
-                     style={{ color: 'hsl(var(--hugh))' }}>--</div>
-                <div className="text-[11px] mt-1 uppercase tracking-[0.2em] text-slate-300/80">{label}</div>
+                <div
+                  className="font-['Playfair Display'] text-3xl md:text-4xl tracking-wide"
+                  style={{ color: 'hsl(var(--hugh))' }}
+                >
+                  --
+                </div>
+                <div className="text-[11px] mt-1 uppercase tracking-[0.2em] text-slate-300/80">
+                  {label}
+                </div>
               </div>
             ))}
           </div>
-        ) : !done ? (
+        ) : (
           <div className="grid grid-cols-4 gap-3 mt-2">
             {[
               ['Days', d],
@@ -123,19 +128,17 @@ export default function Page() {
                 >
                   {String(value).padStart(2, '0')}
                 </div>
-                <div className="text-[11px] mt-1 uppercase tracking-[0.2em] text-slate-300/80">{label}</div>
+                <div className="text-[11px] mt-1 uppercase tracking-[0.2em] text-slate-300/80">
+                  {label}
+                </div>
               </div>
             ))}
-          </div>
-        ) : (
-          <div className="mt-4 text-4xl md:text-5xl goth-glow" style={{ color: 'hsl(var(--hugh))' }}>
-            H U G H No2 ! 🫂
           </div>
         )}
 <div className="mt-8">
   <Link
-    href="/first"
-    className="group relative mx-auto inline-block glow-fade glow-delay-1 pt-10"
+    href="/"
+    className="group relative mx-auto inline-block glow-fade glow-delay-1 pt-8"
   >
 {/* chaotic, clickable arrow (outer = glow, inner = spin) */}
 <span
@@ -157,11 +160,12 @@ export default function Page() {
                  transition-all duration-500 shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_rgba(255,255,255,0.15)]"
     >
       <span className="block leading-tight text-center">
-        <strong>Reverse the Spiral...</strong><br />
-        <em>Or is it reverse the reverse<br />of the spiral? 🤔</em>
+        <strong>Return to the present…</strong><br />
+        <em>(that is also the past, present, and future.<br />
+        All at once,<br />and never at all…)</em>
       </span>
 
-      {/* shimmer sweep (inside the button so it doesn’t block the arrow) */}
+      {/* shimmer sweep lives INSIDE the button */}
       <span className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-700">
         <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[hsl(var(--hugh)/0.25)] to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-[2200ms] ease-out" />
       </span>
@@ -169,13 +173,31 @@ export default function Page() {
   </Link>
 </div>
 
+    
       </section>
 
-      {/* footer familiars */}
       <footer className="fixed bottom-4 left-0 right-0 z-10 flex items-end justify-center gap-6 pointer-events-none">
-        <img src="/HeronEdit.png" alt="Heron by Martin" className="h-16 md:h-20 opacity-65 drop-shadow" />
-        <img src="/Hugh.png" alt="Hugh" className="h-22 md:h-30 opacity-65 drop-shadow" />
-        <img src="/LittleBat.png" alt="Little bat" className="h-16 md:h-20 opacity-65 drop-shadow" />
+        <img
+          src="/HeronEdit.png"
+          alt="Heron by Martin"
+          className="h-16 md:h-20 opacity-65 drop-shadow"
+          loading="eager"
+          decoding="async"
+        />
+        <img
+          src="/Hugh.png"
+          alt="Hugh"
+          className="h-22 md:h-30 opacity-65 drop-shadow"
+          loading="eager"
+          decoding="async"
+        />
+        <img
+          src="/LittleBat.png"
+          alt="Little bat"
+          className="h-16 md:h-20 opacity-65 drop-shadow"
+          loading="eager"
+          decoding="async"
+        />
       </footer>
     </main>
   );
