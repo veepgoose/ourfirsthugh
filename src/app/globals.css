@@ -87,6 +87,14 @@
 
 }
 
+/* Hide the chaotic arrow on small screens */
+@media (max-width: 640px) {
+  .chaotic-arrow {
+    display: none !important;
+  }
+}
+
+
 /* Soft entrance, like words stepping out of smoke */
 @keyframes soft-fade {
   0%   { opacity: 0; transform: translateY(6px) scale(.99); filter: blur(3px); }

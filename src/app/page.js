@@ -12,7 +12,7 @@ function fmt(msLeft) {
 }
 
 export default function Page() {
-  // Second Hugh target (viewer local time)
+ 
   const target = useMemo(() => new Date('2025-10-20T15:10:00'), []);
   const [now, setNow] = useState(null);
   const [mounted, setMounted] = useState(false);
@@ -37,7 +37,7 @@ export default function Page() {
       }}
     >
       <section className="relative z-10 flex flex-col items-center justify-center gap-7 px-5 py-16 text-center text-soft">
-        {/* Title */}
+        
         <h1
           className="
             font-['Cinzel'] goth-glow font-extrabold tracking-tight leading-tight
@@ -74,7 +74,7 @@ export default function Page() {
           />
         </h1>
 
-        {/* Poem */}
+    
         <p className="max-w-2xl font-['Inter'] text-lg md:text-xl italic leading-relaxed text-slate-200/90 fade-text">
           Time unfurls its wings;<br />
           the spiral reverses,<br />
@@ -85,12 +85,12 @@ export default function Page() {
           </span>.
         </p>
 
-        {/* Date label */}
+        
         <p className="font-['Inter'] text-sm tracking-[0.28em] uppercase">
           Monday 20 October 2025
         </p>
 
-        {/* Countdown */}
+  
         {!mounted ? (
           <div className="grid grid-cols-4 gap-3 mt-2 opacity-70">
             {['Days', 'Hours', 'Mins', 'Secs'].map((label) => (
@@ -137,9 +137,9 @@ export default function Page() {
     href="/first"
     className="group relative mx-auto inline-block glow-fade glow-delay-1 pt-10"
   >
-{/* chaotic, clickable arrow (outer = glow, inner = spin) */}
+
 <span
-  className="absolute -top-7 left-1/2 -translate-x-1/2 z-20
+  className="chaotic-arrow absolute -top-7 left-1/2 -translate-x-1/2 z-20
              text-[hsl(var(--hugh))] text-3xl
              glow-fade glow-delay-2"
   aria-hidden="true"
@@ -148,7 +148,7 @@ export default function Page() {
 </span>
 
 
-    {/* the portal button */}
+   
     <span
       className="relative fade-in-delayed btn-shimmer block rounded-full border border-white/10
                  bg-black/40 px-5 py-3 text-slate-300 backdrop-blur-sm
@@ -161,7 +161,6 @@ export default function Page() {
         <em>Or is it reverse the reverse<br />of the spiral? 🤔</em>
       </span>
 
-      {/* shimmer sweep (inside the button so it doesn’t block the arrow) */}
       <span className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-700">
         <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[hsl(var(--hugh)/0.25)] to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-[2200ms] ease-out" />
       </span>
@@ -171,7 +170,7 @@ export default function Page() {
 
       </section>
 
-      {/* footer familiars */}
+    
       <footer className="fixed bottom-4 left-0 right-0 z-10 flex items-end justify-center gap-6 pointer-events-none">
         <img src="/HeronEdit.png" alt="Heron by Martin" className="h-16 md:h-20 opacity-65 drop-shadow" />
         <img src="/Hugh.png" alt="Hugh" className="h-22 md:h-30 opacity-65 drop-shadow" />

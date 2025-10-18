@@ -2,7 +2,7 @@
 import { useMemo, useState, useEffect } from 'react';
 import Link from 'next/link';
 
-// format helper (d/h/m/s) from milliseconds
+
 function fmt(ms) {
   const s = Math.max(0, Math.floor(ms / 1000));
   const d = Math.floor(s / 86400);
@@ -13,7 +13,7 @@ function fmt(ms) {
 }
 
 export default function Page() {
-  // 👇 Your actual first Hugh moment (local time)
+
   const firstHugh = useMemo(() => new Date('2025-10-11T12:00:00'), []);
   const [now, setNow] = useState(null);
   const [mounted, setMounted] = useState(false);
@@ -25,7 +25,7 @@ export default function Page() {
     return () => clearInterval(id);
   }, []);
 
-  // COUNT UP (elapsed since firstHugh). If visited before that date, clamp to 0.
+
   const elapsedMs = now === null ? null : Math.max(0, now - firstHugh.getTime());
   const { d, h, m, sec } = elapsedMs === null ? { d: 0, h: 0, m: 0, sec: 0 } : fmt(elapsedMs);
 
@@ -39,7 +39,7 @@ export default function Page() {
     >
       <section className="relative z-10 flex flex-col items-center justify-center gap-7 px-5 py-16 text-center text-soft">
 
-        {/* Title — same grid layout: heron · centered text · bat */}
+      
         <h1
           className="
             font-['Cinzel'] goth-glow font-extrabold tracking-tight leading-tight
@@ -75,7 +75,7 @@ export default function Page() {
           />
         </h1>
 
-        {/* Tagline (original) */}
+       
         <p className="max-w-2xl font-['Inter'] text-lg md:text-xl italic leading-relaxed text-slate-200/90">
           There was never a beginning - only this slow collision,<br />
           time folding its wings around
@@ -84,12 +84,12 @@ export default function Page() {
           </span>.
         </p>
 
-        {/* Label date — show it's a "since" timer */}
+    
         <p className="font-['Inter'] text-sm tracking-[0.28em] uppercase">
           Since Saturday 11 October 2025
         </p>
 
-        {/* Elapsed counter (keeps your card design) */}
+       
         {!mounted ? (
           <div className="grid grid-cols-4 gap-3 mt-2 opacity-70">
             {['Days', 'Hours', 'Mins', 'Secs'].map((label) => (
@@ -135,14 +135,15 @@ export default function Page() {
             ))}
           </div>
         )}
+
 <div className="mt-8">
   <Link
     href="/"
     className="group relative mx-auto inline-block glow-fade glow-delay-1 pt-8"
   >
-{/* chaotic, clickable arrow (outer = glow, inner = spin) */}
+
 <span
-  className="absolute -top-7 left-1/2 -translate-x-1/2 z-20
+  className="chaotic-arrow absolute -top-7 left-1/2 -translate-x-1/2 z-20
              text-[hsl(var(--hugh))] text-3xl
              glow-fade glow-delay-2"
   aria-hidden="true"
@@ -151,7 +152,8 @@ export default function Page() {
 </span>
 
 
-    {/* the portal button */}
+
+   
     <span
       className="relative fade-in-delayed btn-shimmer block rounded-full border border-white/10
                  bg-black/40 px-5 py-3 text-slate-300 backdrop-blur-sm
@@ -165,7 +167,7 @@ export default function Page() {
         All at once,<br />and never at all…)</em>
       </span>
 
-      {/* shimmer sweep lives INSIDE the button */}
+
       <span className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-700">
         <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[hsl(var(--hugh)/0.25)] to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-[2200ms] ease-out" />
       </span>
