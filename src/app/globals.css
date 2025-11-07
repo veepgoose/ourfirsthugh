@@ -178,6 +178,57 @@
   .glow-fade { animation: none !important; }
 }
 
+/* --- Unfurling mask (reveals poem from top to bottom) --- */
+.unfurl-mask {
+  /* Start hidden with a clip and open it up */
+  clip-path: inset(0 0 100% 0);
+  animation: reveal-clip 1600ms cubic-bezier(.22,.9,.24,1) 300ms forwards;
+}
+@keyframes reveal-clip {
+  to { clip-path: inset(0 0 0 0); }
+}
+
+/* --- Line-by-line reveal with stagger --- */
+.line-reveal {
+  opacity: 0;
+  transform: translateY(6px);
+  filter: blur(3px);
+  animation: line-reveal 700ms ease-out forwards;
+  animation-delay: calc(var(--i) * 85ms + 450ms);
+}
+@keyframes line-reveal {
+  0%   { opacity: 0; transform: translateY(6px); filter: blur(3px); }
+  60%  { opacity: 1; transform: translateY(0);   filter: blur(0); }
+  100% { opacity: 1; }
+}
+
+/* --- Breathing (very subtle scale/brightness) --- */
+.breath {
+  animation: breathy 8s ease-in-out infinite;
+}
+@keyframes breathy {
+  0%,100% { transform: none; filter: brightness(1); }
+  50%     { transform: translateZ(0) scale(1.005); filter: brightness(1.03); }
+}
+
+/* --- Soft veil that “breathes” above smoke --- */
+.poem-veil {
+  background:
+    radial-gradient(60% 40% at 50% 10%, rgba(255,255,255,.06), transparent 60%);
+  animation: shimmer 14s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+  opacity: .35;
+}
+
+/* (You already have shimmer @keyframes; if not, reuse your existing one) */
+/*
+@keyframes shimmer {
+  from { transform: translateY(0); }
+  to   { transform: translateY(2%); }
+}
+*/
+
+
 
 
 /* page-load fade-in (with a tiny lift) */
@@ -212,3 +263,4 @@ nextjs-portal {
   visibility: hidden !important;
   opacity: 0 !important;
 }
+

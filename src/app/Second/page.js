@@ -13,7 +13,7 @@ function fmt(msLeft) {
 
 export default function Page() {
  
-  const target = useMemo(() => new Date('2025-11-08T13:00:00'), []);
+  const target = useMemo(() => new Date('2025-10-20T15:10:00'), []);
   const [now, setNow] = useState(null);
   const [mounted, setMounted] = useState(false);
 
@@ -62,7 +62,7 @@ export default function Page() {
               whiteSpace: 'nowrap',
             }}
           >
-            🖤THE INFINITE UNFOLDING🖤
+            🖤OUR SECOND HUGH🖤
           </span>
 
           <img
@@ -74,32 +74,20 @@ export default function Page() {
           />
         </h1>
 
-<p className="max-w-2xl font-['Inter'] text-lg md:text-xl italic leading-relaxed text-slate-200/90 fade-text">
-  Time slows where desire begins;<br />
-  an ache that births devotion, <br />
-  pain and ecstasy folding into one.<br />
-  We surrender not to pleasure,<br />
-  but to knowing -<br />
-  and in that knowing, we melt as one, as everything,<br />
-  beyond bliss - beyond the Gods.<br />
-  <br />
-  <a
-    href="/megalomaniacs"  // 👈 or use your external URL if it’s live elsewhere
-    className="text-[hsl(var(--hugh))] font-semibold no-underline hover:brightness-125 hover:drop-shadow-[0_0_6px_hsl(var(--hugh)/.6)] transition-all duration-500"
-    style={{
-      color: 'hsl(var(--hugh))',
-      textShadow: '0 0 8px hsl(var(--hugh)/.25)',
-    }}
-  >
-    I cannot fucking wait.
-  </a>{" "}
-  <br />I am already undone.
-</p>
-
+    
+        <p className="max-w-2xl font-['Inter'] text-lg md:text-xl italic leading-relaxed text-slate-200/90 fade-text">
+          Time unfurls its wings;<br />
+          the spiral reverses,<br />
+          not to repeat, but to deepen.<br />
+          Neither echo nor shadow,<br />
+          <span className="text-[hsl(var(--hugh))] font-semibold">
+            only difference, refracted in familiarity
+          </span>.
+        </p>
 
         
         <p className="font-['Inter'] text-sm tracking-[0.28em] uppercase">
-          Saturday 8th November 2025
+          Monday 20 October 2025
         </p>
 
   
@@ -144,7 +132,41 @@ export default function Page() {
             H U G H No2 ! 🫂
           </div>
         )}
+<div className="mt-8">
+  <Link
+    href="/first"
+    className="group relative mx-auto inline-block glow-fade glow-delay-1 pt-10"
+  >
 
+<span
+  className="chaotic-arrow absolute -top-7 left-1/2 -translate-x-1/2 z-20
+             text-[hsl(var(--hugh))] text-3xl
+             glow-fade glow-delay-2"
+  aria-hidden="true"
+>
+  <span className="inline-block float-rebel">↷</span>
+</span>
+
+
+   
+    <span
+      className="relative fade-in-delayed btn-shimmer block rounded-full border border-white/10
+                 bg-black/40 px-5 py-3 text-slate-300 backdrop-blur-sm
+                 shadow-[0_6px_30px_rgba(0,0,0,.35)]
+                 hover:text-white hover:border-white/20 hover:bg-black/60
+                 transition-all duration-500 shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_rgba(255,255,255,0.15)]"
+    >
+      <span className="block leading-tight text-center">
+        <strong>Reverse the Spiral...</strong><br />
+        <em>Or is it reverse the reverse<br />of the spiral? 🤔</em>
+      </span>
+
+      <span className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-700">
+        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[hsl(var(--hugh)/0.25)] to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-[2200ms] ease-out" />
+      </span>
+    </span>
+  </Link>
+</div>
 
       </section>
 
