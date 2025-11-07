@@ -56,7 +56,7 @@ export default function Page() {
 
           <span
             className="text-white/65 text-center inline-block
-                       text-[7vw] sm:text-[5vw] md:text-[3.5vw] lg:text-6xl"
+                       text-[7vw] sm:text-[3vw] md:text-[3.5vw] lg:text-6xl"
             style={{
               textShadow: '0 0 15px hsl(var(--hugh)/.3), 0 0 35px hsl(var(--hugh)/.2)',
               whiteSpace: 'nowrap',
