@@ -63,7 +63,7 @@ export default function Page() {
               whiteSpace: 'nowrap',
             }}
           >
-            🖤THE INFINITE UNFOLDING🖤
+            🖤HUGHS🖤
           </span>
 
           <img
