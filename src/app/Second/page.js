@@ -2,8 +2,8 @@
 import { useMemo, useState, useEffect } from 'react';
 import Link from 'next/link';
 
-function fmt(msLeft) {
-  const s = Math.max(0, Math.floor(msLeft / 1000));
+function fmt(ms) {
+  const s = Math.max(0, Math.floor(ms / 1000));
   const d = Math.floor(s / 86400);
   const h = Math.floor((s % 86400) / 3600);
   const m = Math.floor((s % 3600) / 60);
@@ -13,7 +13,7 @@ function fmt(msLeft) {
 
 export default function Page() {
  
-  const target = useMemo(() => new Date('2025-10-20T15:10:00'), []);
+  const secondHugh = useMemo(() => new Date('2025-10-20T15:10:00'), []);
   const [now, setNow] = useState(null);
   const [mounted, setMounted] = useState(false);
 
@@ -24,9 +24,8 @@ export default function Page() {
     return () => clearInterval(id);
   }, []);
 
-  const msLeft = now === null ? null : Math.max(0, target.getTime() - now);
-  const { d, h, m, sec } = msLeft === null ? { d: 0, h: 0, m: 0, sec: 0 } : fmt(msLeft);
-  const done = msLeft === 0;
+  const elapsedMs = now === null ? null : Math.max(0, now - secondHugh.getTime());
+  const { d, h, m, sec } = elapsedMs === null ? { d: 0, h: 0, m: 0, sec: 0 } : fmt(elapsedMs);
 
   return (
     <main
@@ -87,7 +86,7 @@ export default function Page() {
 
         
         <p className="font-['Inter'] text-sm tracking-[0.28em] uppercase">
-          Monday 20 October 2025
+          Since Monday 20 October 2025
         </p>
 
   
@@ -104,7 +103,7 @@ export default function Page() {
               </div>
             ))}
           </div>
-        ) : !done ? (
+        ) : (
           <div className="grid grid-cols-4 gap-3 mt-2">
             {[
               ['Days', d],
@@ -127,46 +126,13 @@ export default function Page() {
               </div>
             ))}
           </div>
-        ) : (
-          <div className="mt-4 text-4xl md:text-5xl goth-glow" style={{ color: 'hsl(var(--hugh))' }}>
-            H U G H No2 ! 🫂
-          </div>
         )}
-<div className="mt-8">
-  <Link
-    href="/first"
-    className="group relative mx-auto inline-block glow-fade glow-delay-1 pt-10"
-  >
-
-<span
-  className="chaotic-arrow absolute -top-7 left-1/2 -translate-x-1/2 z-20
-             text-[hsl(var(--hugh))] text-3xl
-             glow-fade glow-delay-2"
-  aria-hidden="true"
->
-  <span className="inline-block float-rebel">↷</span>
-</span>
-
-
-   
-    <span
-      className="relative fade-in-delayed btn-shimmer block rounded-full border border-white/10
-                 bg-black/40 px-5 py-3 text-slate-300 backdrop-blur-sm
-                 shadow-[0_6px_30px_rgba(0,0,0,.35)]
-                 hover:text-white hover:border-white/20 hover:bg-black/60
-                 transition-all duration-500 shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_rgba(255,255,255,0.15)]"
-    >
-      <span className="block leading-tight text-center">
-        <strong>Reverse the Spiral...</strong><br />
-        <em>Or is it reverse the reverse<br />of the spiral? 🤔</em>
-      </span>
-
-      <span className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-700">
-        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[hsl(var(--hugh)/0.25)] to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-[2200ms] ease-out" />
-      </span>
-    </span>
-  </Link>
-</div>
+        <Link
+          href="/"
+          className="font-['Inter'] mt-4 text-[11px] uppercase tracking-[0.28em] text-slate-300/70 transition-colors duration-500 hover:text-white/90"
+        >
+          ← Back
+        </Link>
 
       </section>
 

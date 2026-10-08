@@ -78,10 +78,10 @@ export default function Page() {
        
         <p className="max-w-2xl font-['Inter'] text-lg md:text-xl italic leading-relaxed text-slate-200/90">
           There was never a beginning - only this slow collision,<br />
-          time folding its wings around
+          time folding its wings around <br />
            <span className="text-[hsl(var(--hugh))] font-semibold">
-             our first hugh
-          </span>.
+              our first hugh
+          </span>
         </p>
 
     
@@ -136,44 +136,12 @@ export default function Page() {
           </div>
         )}
 
-<div className="mt-8">
-  <Link
-    href="/"
-    className="group relative mx-auto inline-block glow-fade glow-delay-1 pt-8"
-  >
-
-<span
-  className="chaotic-arrow absolute -top-7 left-1/2 -translate-x-1/2 z-20
-             text-[hsl(var(--hugh))] text-3xl
-             glow-fade glow-delay-2"
-  aria-hidden="true"
->
-  <span className="inline-block float-rebel">↷</span>
-</span>
-
-
-
-   
-    <span
-      className="relative fade-in-delayed btn-shimmer block rounded-full border border-white/10
-                 bg-black/40 px-5 py-3 text-slate-300 backdrop-blur-sm
-                 shadow-[0_6px_30px_rgba(0,0,0,.35)]
-                 hover:text-white hover:border-white/20 hover:bg-black/60
-                 transition-all duration-500 shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_rgba(255,255,255,0.15)]"
-    >
-      <span className="block leading-tight text-center">
-        <strong>Return to the present…</strong><br />
-        <em>(that is also the past, present, and future.<br />
-        All at once,<br />and never at all…)</em>
-      </span>
-
-
-      <span className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-700">
-        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[hsl(var(--hugh)/0.25)] to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-[2200ms] ease-out" />
-      </span>
-    </span>
-  </Link>
-</div>
+        <Link
+          href="/"
+          className="font-['Inter'] mt-4 text-[11px] uppercase tracking-[0.28em] text-slate-300/70 transition-colors duration-500 hover:text-white/90"
+        >
+          ← Back
+        </Link>
 
     
       </section>

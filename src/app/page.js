@@ -1,6 +1,7 @@
 'use client';
 import { useMemo, useState, useEffect } from 'react';
 import Link from 'next/link';
+import GoldenBook from '../components/GoldenBook';
 
 function fmt(msLeft) {
   const s = Math.max(0, Math.floor(msLeft / 1000));
@@ -36,7 +37,7 @@ export default function Page() {
         '--text-alpha': 0.94,
       }}
     >
-      <section className="relative z-10 flex flex-col items-center justify-center gap-7 px-5 py-16 text-center text-soft">
+      <section className="relative z-10 flex flex-col items-center justify-center gap-7 px-5 pt-16 pb-40 text-center text-soft">
         
         <h1
           className="
@@ -74,33 +75,22 @@ export default function Page() {
           />
         </h1>
 
-<p className="max-w-2xl font-['Inter'] text-lg md:text-xl italic leading-relaxed text-slate-200/90 fade-text">
-  Time slows where desire begins;<br />
-  an ache that births devotion, <br />
-  pain and ecstasy folding into one.<br />
-  We surrender not to pleasure,<br />
-  but to knowing -<br />
-  and in that knowing, we melt as one, as everything,<br />
-  beyond bliss - beyond the Gods.<br />
-  <br />
-  <a
-    href="/megalomaniacs"  // 👈 or use your external URL if it’s live elsewhere
-    className="text-[hsl(var(--hugh))] font-semibold no-underline hover:brightness-125 hover:drop-shadow-[0_0_6px_hsl(var(--hugh)/.6)] transition-all duration-500"
-    style={{
-      color: 'hsl(var(--hugh))',
-      textShadow: '0 0 8px hsl(var(--hugh)/.25)',
-    }}
-  >
-    I cannot fucking wait.
-  </a>{" "}
-  <br />I am already undone.
-</p>
+<div className="fade-in-up fade-in-delay-2">
+          <GoldenBook />
+        </div>
 
 
         
         <p className="font-['Inter'] text-sm tracking-[0.28em] uppercase">
-          Saturday 8th November 2025
+          nice to see hugh!
         </p>
+
+        <Link
+          href="/archive"
+          className="font-['Inter'] -mt-2 rounded-full border border-white/15 bg-black/45 backdrop-blur-sm px-7 py-2.5 text-[11px] uppercase tracking-[0.28em] text-slate-200/90 shadow-[0_10px_40px_rgba(0,0,0,.45)] transition-all duration-500 hover:border-white/30 hover:brightness-125 hover:drop-shadow-[0_0_6px_hsl(var(--hugh)/.6)]"
+        >
+          Archive
+        </Link>
 
   
         {!mounted ? (
@@ -141,7 +131,7 @@ export default function Page() {
           </div>
         ) : (
           <div className="mt-4 text-4xl md:text-5xl goth-glow" style={{ color: 'hsl(var(--hugh))' }}>
-            H U G H No2 ! 🫂
+         
           </div>
         )}
 
